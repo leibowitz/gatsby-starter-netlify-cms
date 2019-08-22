@@ -1,6 +1,10 @@
 backend:
   name: git-gateway
   branch: master
+development_overrides:
+  backend:
+    name: file-system
+    api_root: 'http://localhost:8000/api'
 
 media_folder: static/img
 public_folder: /img

@@ -1,4 +1,5 @@
 var proxy = require('http-proxy-middleware')
+let fsApi = require('netlify-cms-backend-fs/dist/fs/fs-express-api')
 
 module.exports = {
   siteMetadata: {
@@ -65,6 +66,9 @@ module.exports = {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {
         modulePath: `${__dirname}/src/cms/cms.js`,
+        enableIdentityWidget: false,
+        publicPath: 'admin',
+        htmlTitle: 'Content Manager',
       },
     },
     {
@@ -87,6 +91,7 @@ module.exports = {
           '/.netlify/functions/': '',
         },
       })
-    )
+    );
+    fsApi(app);
   },
 }
